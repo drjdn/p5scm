@@ -61,7 +61,8 @@ $ p5sch-utop
 
 which uses [utop](https://opam.ocaml.org/blog/about-utop/) for code completion
 and many of the other benefits that it provides.  Currently both the `#require`
-and `#use` directives of `utop` function in the interpreter/REPL.
+and `#use` directives of `utop` function in the interpreter/REPL (same syntax as
+`utop` however no terminating `;;` required).
 
 License
 -------

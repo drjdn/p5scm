@@ -1,0 +1,26 @@
+;; generate lexer
+(ocamllex
+  (modules lexer))
+
+;; generate parser
+(menhir
+  (modules parser)
+  (flags (-v --external-tokens Tokens)))
+
+(library
+  (name        p5scm)
+  (public_name p5scm.lib)
+  (libraries  sexp_pretty compiler-libs compiler-libs.common camlp5)
+  (preprocess (per_module
+               ((pps ppx_sexp_conv) ast)))  
+  (virtual_deps menhir))
+
+(rule
+  (target pconfig.ml)
+  (deps camlp5/ocaml_stuff/%{ocaml_version}/utils/pconfig.ml)
+  (action (copy %{deps} %{target})))
+
+(rule
+  (targets pa_scheme.ml pr_o.ml pr_dump.ml exparser.ml exparser.mli)
+  (deps (source_tree camlp5))
+  (action (chdir camlp5 (run make))))

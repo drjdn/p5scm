@@ -1,0 +1,22 @@
+(lang dune 2.7)
+(name p5scm)
+(version 0.1.0)
+(using menhir 2.0)
+
+(generate_opam_files true)
+
+(source (github drjdn/p5scm))
+(license MIT)
+(authors "Jason D. Nielsen")
+(maintainers "drjdnielsen@gmail.com")
+
+(package
+ (name p5scm)
+ (synopsis "Scheme via camlp5")
+ (description "This a simple scheme implementation using pa_schemer from camlp5")
+ (depends
+  (ocaml (>= 4.00))
+  (cppo	(>= 1.6.6))
+  (camlp5 (>= 8.00~alpha05))
+  (sexp_pretty (>= v0.14.0))
+  (ppx_sexp_conv (>= v0.14.0))))

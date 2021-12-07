@@ -1,0 +1,7 @@
+(executable
+  (name main)
+  (public_name p5scm-utop)
+  (modes byte)
+  (link_flags -linkall)
+  (libraries compiler-libs.toplevel utop p5scm)
+  (package p5scm))

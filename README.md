@@ -17,7 +17,7 @@ documentation for the scheme extension provides the following comparison between
 | let x = 42 and y = 27 in x + y;;     | (let ((x 42) (y 27)) (+ x y))
 | let x = 42 in let y = 27 in x + y;;  | (let* ((x 42) (y 27)) (+ x y))
 | module M = struct ... end;;          | (module M (struct ...))
-| type 'a t = A of 'a * int | B        | (type (t 'a) (sum (A 'a int) (B)))
+| type 'a t = A of 'a * int \| B       | (type (t 'a) (sum (A 'a int) (B)))
 | fun x y -> x                         | (lambda (x y) x)
 | x; y; z                              | (begin x y z)
 | f x y                                | (f x y)

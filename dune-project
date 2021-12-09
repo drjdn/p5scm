@@ -15,7 +15,7 @@
  (synopsis "Scheme via camlp5")
  (description "This a simple scheme implementation using pa_schemer from camlp5")
  (depends
-  (ocaml (>= 4.00))
+  (ocaml (and (>= 4.06.0) (< 4.14.0)))
   (cppo	(>= 1.6.6))
   (camlp5 (>= 8.00~alpha05))
   (sexp_pretty (>= v0.14.0))

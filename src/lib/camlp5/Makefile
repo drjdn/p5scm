@@ -6,8 +6,6 @@ VERSION0 = $(shell echo $(VERSION) | sed 's/\(.*\)[0-9]/\10/')
 all: pa_scheme pr_o pr_dump exparser pconfig
 
 pa_scheme:
-	@echo $(VERSION)
-	@echo $(VERSION0)
 	cppo pa_schemer.cppo.ml -o pa_schemer.ml
 	camlp5 pa_r.cmo pa_rp.cmo pa_extend.cmo q_MLast.cmo pr_o.cmo pa_schemer.ml -o ../pa_scheme.ml
 

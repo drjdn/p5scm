@@ -16,6 +16,7 @@
  (description "This a simple scheme implementation using pa_schemer from camlp5")
  (depends
   (ocaml (and (>= 4.06.0) (< 4.14.0)))
+  (menhir (>= 20201214))
   (cppo	(>= 1.6.6))
   (camlp5 (>= 8.00~alpha05))
   (sexp_pretty (>= v0.14.0))

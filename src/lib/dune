@@ -16,11 +16,6 @@
   (virtual_deps menhir))
 
 (rule
-  (target pconfig.ml)
-  (deps camlp5/ocaml_stuff/%{ocaml_version}/utils/pconfig.ml)
-  (action (copy %{deps} %{target})))
-
-(rule
-  (targets pa_scheme.ml pr_o.ml pr_dump.ml exparser.ml exparser.mli)
+  (targets pa_scheme.ml pr_o.ml pr_dump.ml exparser.ml exparser.mli pconfig.ml)
   (deps (source_tree camlp5))
   (action (chdir camlp5 (run make))))

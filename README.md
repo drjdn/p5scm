@@ -22,7 +22,6 @@ documentation for the scheme extension provides the following comparison between
 | x; y; z                              | (begin x y z)
 | f x y                                | (f x y)
 | [1; 2; 3]                            | [1 2 3]
-| x :: y :: z :: t                     | [x y z :: t]
 | a, b, c                              | (values a b c)
 | match x with 'A'..'Z' -> "x"         | (match x ((range 'A' 'Z') "x")))
 | {x = y; z = t}                       | {(x y) (z t)}

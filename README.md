@@ -63,7 +63,7 @@ and many of the other benefits that it provides.  Currently both the `#require`
 and `#use` directives of `utop` function in the interpreter/REPL (same syntax as
 `utop` however no terminating `;;` required).
 
-Only `OCaml` versions >= 4.10.0 are supported by the `opam` package.
+Only `OCaml` versions >= 4.12.0 are supported by the `opam` package.
 Instructions for adding support for older versions can be found
 ([here](https://github.com/drjdn/p5scm/blob/master/src/lib/camlp5/ocaml_stuff/README.md)).
 

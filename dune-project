@@ -3,7 +3,8 @@
 (version 0.1.0)
 (using menhir 2.0)
 
-(generate_opam_files true)
+; Useful for new projects
+;(generate_opam_files true)
 
 (source (github drjdn/p5scm))
 (license MIT)
@@ -15,7 +16,7 @@
  (synopsis "Scheme via camlp5")
  (description "This a simple scheme implementation using pa_schemer from camlp5")
  (depends
-  (ocaml (and (>= 4.10.0) (< 4.14.0)))
+  (ocaml (and (>= 4.12.0) (< 4.14.0)))
   (menhir (>= 20201214))
   (cppo	(>= 1.6.6))
   (camlp5 (>= 8.00~alpha05))

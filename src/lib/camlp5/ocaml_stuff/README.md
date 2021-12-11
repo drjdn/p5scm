@@ -2,7 +2,7 @@ Adding Support for Older OCaml Versions
 ---------------------------------------
 
 The [opam](https://opam.ocaml.org) package of `p5scm` only supports `OCaml`
-versions >= 4.10.0.  This is for simplicity of maintenance on my part.  Also,
+versions >= 4.12.0.  This is for simplicity of maintenance on my part.  Also,
 with the advent of `opam` switches I don't see the need to support older
 versions, i.e. to support linux distributions that have outdated `OCaml`
 compiler toolchains.  Luckily [camlp5](https://github.com/camlp5) has support

@@ -65,7 +65,7 @@ and `#use` directives of `utop` function in the interpreter/REPL (same syntax as
 
 Only `OCaml` versions >= 4.12.0 are supported by the `opam` package.
 Instructions for adding support for older versions can be found
-([here](https://github.com/drjdn/p5scm/blob/master/src/lib/camlp5/ocaml_stuff/README.md)).
+([here](https://github.com/drjdn/p5scm/blob/main/src/lib/camlp5/ocaml_stuff/README.md)).
 
 License
 -------

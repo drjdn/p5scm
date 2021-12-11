@@ -3,8 +3,7 @@
 (version 0.1.0)
 (using menhir 2.0)
 
-; Useful for new projects
-;(generate_opam_files true)
+(generate_opam_files true)
 
 (source (github drjdn/p5scm))
 (license MIT)

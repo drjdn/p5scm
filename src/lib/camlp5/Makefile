@@ -1,7 +1,7 @@
 .PHONY: all pa_scheme pr_o pr_dump exparser pconfig
 
 VERSION = $(shell ocamlc --version)
-VERSION0 = $(shell echo $(VERSION) | sed 's/\(.*\)[0-9]/\1X/')
+VERSION0 = $(shell echo $(VERSION) | head -c 6 | sed 's/\(.*\)[0-9]/\1X/')
 
 all: pa_scheme pr_o pr_dump exparser pconfig
 

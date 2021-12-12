@@ -21,5 +21,4 @@
   (camlp5 (>= 8.00~alpha05))
   (sexp_pretty (>= v0.14.0))
   (ppx_sexp_conv (>= v0.14.0))
-  (utop (>= 2.7.0))
-  (conf-perl-string-shellquote (>= 1))))
+  (utop (>= 2.7.0))))

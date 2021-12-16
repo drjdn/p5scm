@@ -3,7 +3,7 @@ A Scheme Implementation using Pa_schemer from Camlp5
 
 This repository contains a scheme implementation based on
 [pa_schemer.ml](https://github.com/camlp5/camlp5/blob/master/etc/pa_schemer.ml)
-which is included as an extenstion of [camlp5](https://camlp5.github.io).  This
+which is included as an extension of [camlp5](https://camlp5.github.io).  This
 provides a scheme-like syntax for [OCaml](https://ocaml.org).  The
 [camlp5](https://github.com/camlp5/camlp5/blob/master/doc/rst/scheme.rst)
 documentation for the scheme extension provides the following comparison between

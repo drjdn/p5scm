@@ -1,9 +1,9 @@
 .PHONY: all pa_scheme pr_o pr_dump exparser pconfig
 
-VERSION = $(shell ocamlc --version)
-VERSION0 = $(shell echo $(VERSION) | head -c 6 | sed 's/\(.*\)[0-9]/\1X/')
-
 all: pa_scheme pr_o pr_dump exparser pconfig
+
+
+VERSION = $(shell ocamlc get_version.ml -o get_version; ./get_version)
 
 pa_scheme:
 	cppo pa_schemer.cppo.ml -o pa_schemer.ml
@@ -22,4 +22,4 @@ exparser:
 	camlp5 pa_r.cmo q_MLast.cmo pr_o.cmo exparser.mli -o ../exparser.mli
 
 pconfig:
-	cp ./ocaml_stuff/$(VERSION0)/utils/pconfig.ml ../pconfig.ml
+	cp ./ocaml_stuff/$(VERSION)/utils/pconfig.ml ../pconfig.ml

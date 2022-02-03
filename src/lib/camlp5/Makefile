@@ -11,7 +11,7 @@ pa_scheme:
 
 pr_o:
 	cppo pr_o.cppo.ml -o pr_o.ml
-	camlp5 pa_r.cmo pa_rp.cmo pa_macro.cmo q_MLast.cmo pa_extfun.cmo pa_extprint.cmo pa_pprintf.cmo q_MLast.cmo pr_o.cmo pr_o.ml -o ../pr_o.ml
+	camlp5 pa_r.cmo pa_rp.cmo pa_macro.cmo q_MLast.cmo pa_extfun.cmo pa_extprint.cmo pa_pprintf.cmo pr_o.cmo pr_o.ml -o ../pr_o.ml
 
 pr_dump:
 	cppo pr_dump.cppo.ml -o pr_dump.ml

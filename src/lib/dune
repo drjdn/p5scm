@@ -19,3 +19,7 @@
   (targets pa_scheme.ml pr_o.ml pr_dump.ml exparser.ml exparser.mli pconfig.ml)
   (deps (source_tree camlp5))
   (action (chdir camlp5 (run make))))
+
+(env
+  (dev
+    (flags (:standard -w -27 -w -32 -w -33 -w -39))))

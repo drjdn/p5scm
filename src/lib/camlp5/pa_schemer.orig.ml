@@ -67,7 +67,7 @@ value rec ident len =
 value identifier kwt s =
   let con =
     try do {
-      ignore (Hashtbl.find kwt s : string);
+      ignore(Hashtbl.find kwt s : string);
       ""
     }
     with
@@ -545,8 +545,7 @@ value lexer_gmake () =
   {Plexing.tok_func = Plexing.lexer_func_of_parser (lexer2 kwt);
    Plexing.tok_using = lexer_using kwt; Plexing.tok_removing = fun [];
    Plexing.tok_match = Plexing.default_match; Plexing.tok_text = lexer_text;
-   Plexing.tok_comm = None;
-   Plexing.kwds = kwt}
+   Plexing.tok_comm = None; Plexing.kwds = kwt }
 ;
 
 (* Building AST *)

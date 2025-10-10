@@ -4,19 +4,19 @@
 
 #load "q_MLast.cmo";
 
-type spat_comp =
+type spat_comp = Exparser_types.spat_comp ==
   [ SpTrm of MLast.loc and MLast.patt and MLast.v (option MLast.expr)
   | SpNtr of MLast.loc and MLast.patt and MLast.expr
   | SpLet of MLast.loc and MLast.patt and MLast.expr
-  | SpLhd of MLast.loc and list (list MLast.patt)
+  | SpLhd of MLast.loc and list (list MLast.patt) and MLast.v (option MLast.expr)
   | SpStr of MLast.loc and MLast.patt ]
 ;
-type sexp_comp =
+type sexp_comp = Exparser_types.sexp_comp ==
   [ SeTrm of MLast.loc and MLast.expr
   | SeNtr of MLast.loc and MLast.expr ]
 ;
 
-type spat_comp_opt =
+type spat_comp_opt = Exparser_types.spat_comp_opt ==
   [ SpoNoth
   | SpoBang
   | SpoQues of MLast.expr ]
@@ -164,7 +164,7 @@ value stream_pattern_component skont ckont =
                 [ Some $p$ -> $skont$
                 | _ -> $ckont$ ] >>
   | SpLet _ _ _ -> assert False
-  | SpLhd loc [pl :: pll] ->
+  | SpLhd loc [pl :: pll] wo ->
       let mklistpat loc pl =
         List.fold_right (fun p1 p2 -> <:patt< [$p1$ :: $p2$] >>) pl
           <:patt< [] >>
@@ -180,9 +180,9 @@ value stream_pattern_component skont ckont =
           List.fold_left (fun p1 p2 -> <:patt< $p1$ | $p2$ >>) p pl
         in
         <:expr< match Stream.npeek $int:string_of_int len$ strm__ with
-                [ $p$ -> $skont$
+                [ $p$ $_opt:wo$ -> $skont$
                 | _ -> $ckont$ ] >>
-  | SpLhd loc [] -> ckont
+  | SpLhd loc [] wo -> ckont
   | SpStr loc p ->
       try
         match p with

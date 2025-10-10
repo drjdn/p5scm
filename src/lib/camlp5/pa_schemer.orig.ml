@@ -520,7 +520,7 @@ and after_space len kwt =
 value lexer_using kwt (con, prm) =
   match con with
   [ "CHAR" | "DOT" | "EOI" | "INT" | "INT_l" | "INT_L" | "INT_n" | "FLOAT" |
-    "LIDENT" | "NL" | "QUOT" | "SPACEDOT" | "STRING" | "UIDENT" →
+    "LIDENT" | "NL" | "QUOT" | "SPACEDOT" | "STRING" | "RAWSTRING" | "UIDENT" →
       ()
   | "ANTIQUOT" | "ANTIQUOT_LOC" → ()
   | "" → try do { Hashtbl.find kwt prm ; () } with [ Not_found → Hashtbl.add kwt prm prm ]
@@ -1480,11 +1480,11 @@ and type_param_se se =
   match se with
   [ Slid _ s when String.length s >= 2 && s.[0] = ''' →
       let s = String.sub s 1 (String.length s - 1) in
-      (<:vala< (Some s) >>, (None, False))
+      (<:vala< (Some s) >>, <:vala< "" >>)
   | Slid _ s when String.length s >= 3 && s.[1] = ''' →
       let vara =
-        if s.[0] = '+' then (Some True, False)
-        else if s.[0] = '-' then (Some False, False)
+        if s.[0] = '+' then <:vala< "+" >>
+        else if s.[0] = '-' then <:vala< "-" >>
         else error se "type_param"
       and s = String.sub s 2 (String.length s - 2) in
       (<:vala< (Some s) >>, vara)
@@ -1522,6 +1522,7 @@ and ctyp_se =
       <:ctyp< ($t1$ as $t2$) >>
   | Sexpr loc [Slid _ "*" :: sel] →
       let tl = anti_list_map ctyp_se sel in
+      let tl = Pcaml.vala_map (List.map (fun ct -> (<:vala< None >>, ct))) tl in
       <:ctyp< ($_list:tl$) >>
   | Sexpr loc [Slid _ "=="; se1; se2] →
       let t1 = ctyp_se se1 in
@@ -1841,6 +1842,9 @@ EXTEND
       | s = V FLOAT → Sfloat loc s
       | s = V CHAR → Schar loc s
       | s = V STRING → Sstring loc s
+      | s = RAWSTRING →
+        let (_,s) = Asttools.split_rawstring s in
+            Sstring loc (Ploc.VaVal s)
       | s = SPACEDOT → Slid loc "."
       | s = QUOT →
           let i = String.index s ':' in

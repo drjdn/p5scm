@@ -1,6 +1,6 @@
-.PHONY: all pa_scheme pr_o pr_dump exparser pconfig
+.PHONY: all pa_scheme pr_o o_keywords pr_dump exparser pconfig
 
-all: pa_scheme pr_o pr_dump exparser pconfig
+all: pa_scheme pr_o o_keywords pr_dump exparser pconfig
 
 
 VERSION = $(shell ocamlc get_version.ml -o get_version; ./get_version)
@@ -14,6 +14,9 @@ pr_o:
 	cppo pr_o.cppo.ml -o pr_o.ml
 	not-ocamlfind preprocess -package camlp5.extend,camlp5.macro,camlp5.quotations,camlp5.extfun,camlp5.extprint,camlp5.pprintf,camlp5.pr_o -syntax camlp5r pr_o.ml > ../pr_o.ml
 #	camlp5 pa_r.cmo pa_rp.cmo pa_macro.cmo q_MLast.cmo pa_extfun.cmo pa_extprint.cmo pa_pprintf.cmo pr_o.cmo pr_o.ml -o ../pr_o.ml
+
+o_keywords:
+	not-ocamlfind preprocess -package camlp5.pr_o -syntax camlp5r o_keywords.ml > ../o_keywords.ml
 
 pr_dump:
 	cppo pr_dump.cppo.ml -o pr_dump.ml
